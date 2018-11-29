@@ -29,9 +29,9 @@ set_property target_language Verilog [current_project]
 set_property ip_output_repo /home/veymax/MASTER_PROJECT/MASTER_PROJECT.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib {
-  /home/veymax/Documents/2018Fall/DigitalSystemDesign/Stepper_Motor_Full_Step/clock_div.v
-  /home/veymax/Documents/2018Fall/DigitalSystemDesign/Stepper_Motor_Full_Step/pmod_step_driver.v
-  /home/veymax/Documents/2018Fall/DigitalSystemDesign/Stepper_Motor_Full_Step/pmod_step_interface.v
+  /home/veymax/MASTER_PROJECT/clock_div.v
+  /home/veymax/MASTER_PROJECT/MASTER_PROJECT.srcs/sources_1/new/pmod_step_driver.v
+  /home/veymax/MASTER_PROJECT/pmod_step_interface.v
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

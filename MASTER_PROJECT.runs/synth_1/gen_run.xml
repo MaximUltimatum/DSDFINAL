@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1543525850">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1543528006">
   <File Type="VDS-TIMING-PB" Name="pmod_step_interface_timing_summary_synth.pb"/>
   <File Type="VDS-TIMINGSUMMARY" Name="pmod_step_interface_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="pmod_step_interface.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="pmod_step_interface_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="pmod_step_interface_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="pmod_step_interface_drc_synth.rpt"/>
+  <File Type="RDS-RDS" Name="pmod_step_interface.vds"/>
   <File Type="REPORTS-TCL" Name="pmod_step_interface_reports.tcl"/>
   <File Type="PA-TCL" Name="pmod_step_interface.tcl"/>
-  <File Type="RDS-RDS" Name="pmod_step_interface.vds"/>
-  <File Type="RDS-PROPCONSTRS" Name="pmod_step_interface_drc_synth.rpt"/>
-  <File Type="RDS-UTIL" Name="pmod_step_interface_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="pmod_step_interface_utilization_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PPRDIR/../Documents/2018Fall/DigitalSystemDesign/Stepper_Motor_Full_Step/clock_div.v">
+    <File Path="$PPRDIR/clock_div.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../Documents/2018Fall/DigitalSystemDesign/Stepper_Motor_Full_Step/pmod_step_driver.v">
+    <File Path="$PSRCDIR/sources_1/new/pmod_step_driver.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../Documents/2018Fall/DigitalSystemDesign/Stepper_Motor_Full_Step/pmod_step_interface.v">
+    <File Path="$PPRDIR/pmod_step_interface.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -51,9 +51,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
-      <Desc>Vivado Synthesis Defaults</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>

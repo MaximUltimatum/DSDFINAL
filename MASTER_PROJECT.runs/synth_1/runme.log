@@ -14,24 +14,24 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 18089 
+INFO: Helper process launched with PID 21872 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1228.898 ; gain = 68.898 ; free physical = 122 ; free virtual = 7442
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1228.895 ; gain = 68.898 ; free physical = 612 ; free virtual = 7215
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'pmod_step_interface' [/home/veymax/Documents/2018Fall/DigitalSystemDesign/Stepper_Motor_Full_Step/pmod_step_interface.v:26]
-INFO: [Synth 8-6157] synthesizing module 'clock_div' [/home/veymax/Documents/2018Fall/DigitalSystemDesign/Stepper_Motor_Full_Step/clock_div.v:25]
+INFO: [Synth 8-6157] synthesizing module 'pmod_step_interface' [/home/veymax/MASTER_PROJECT/pmod_step_interface.v:26]
+INFO: [Synth 8-6157] synthesizing module 'clock_div' [/home/veymax/MASTER_PROJECT/clock_div.v:25]
 	Parameter define_speed bound to: 26'b00010011000100101101000000 
-INFO: [Synth 8-6155] done synthesizing module 'clock_div' (1#1) [/home/veymax/Documents/2018Fall/DigitalSystemDesign/Stepper_Motor_Full_Step/clock_div.v:25]
-INFO: [Synth 8-6157] synthesizing module 'pmod_step_driver' [/home/veymax/Documents/2018Fall/DigitalSystemDesign/Stepper_Motor_Full_Step/pmod_step_driver.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'clock_div' (1#1) [/home/veymax/MASTER_PROJECT/clock_div.v:25]
+INFO: [Synth 8-6157] synthesizing module 'pmod_step_driver' [/home/veymax/MASTER_PROJECT/MASTER_PROJECT.srcs/sources_1/new/pmod_step_driver.v:1]
 	Parameter sig4 bound to: 3'b001 
 	Parameter sig3 bound to: 3'b011 
 	Parameter sig2 bound to: 3'b010 
 	Parameter sig1 bound to: 3'b110 
 	Parameter sig0 bound to: 3'b000 
-INFO: [Synth 8-6155] done synthesizing module 'pmod_step_driver' (2#1) [/home/veymax/Documents/2018Fall/DigitalSystemDesign/Stepper_Motor_Full_Step/pmod_step_driver.v:4]
-INFO: [Synth 8-6155] done synthesizing module 'pmod_step_interface' (3#1) [/home/veymax/Documents/2018Fall/DigitalSystemDesign/Stepper_Motor_Full_Step/pmod_step_interface.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'pmod_step_driver' (2#1) [/home/veymax/MASTER_PROJECT/MASTER_PROJECT.srcs/sources_1/new/pmod_step_driver.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'pmod_step_interface' (3#1) [/home/veymax/MASTER_PROJECT/pmod_step_interface.v:26]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1273.523 ; gain = 113.523 ; free physical = 197 ; free virtual = 7454
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1273.520 ; gain = 113.523 ; free physical = 625 ; free virtual = 7228
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -44,10 +44,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1273.523 ; gain = 113.523 ; free physical = 198 ; free virtual = 7455
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1273.520 ; gain = 113.523 ; free physical = 624 ; free virtual = 7227
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1273.523 ; gain = 113.523 ; free physical = 198 ; free virtual = 7455
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1273.520 ; gain = 113.523 ; free physical = 624 ; free virtual = 7227
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -63,26 +63,26 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1572.375 ; gain = 0.000 ; free physical = 140 ; free virtual = 7217
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1572.371 ; gain = 0.000 ; free physical = 291 ; free virtual = 6993
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:21 . Memory (MB): peak = 1572.375 ; gain = 412.375 ; free physical = 208 ; free virtual = 7285
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:23 . Memory (MB): peak = 1572.371 ; gain = 412.375 ; free physical = 358 ; free virtual = 7060
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:21 . Memory (MB): peak = 1572.375 ; gain = 412.375 ; free physical = 208 ; free virtual = 7285
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:23 . Memory (MB): peak = 1572.371 ; gain = 412.375 ; free physical = 358 ; free virtual = 7060
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:21 . Memory (MB): peak = 1572.375 ; gain = 412.375 ; free physical = 209 ; free virtual = 7286
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:23 . Memory (MB): peak = 1572.371 ; gain = 412.375 ; free physical = 360 ; free virtual = 7061
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5545] ROM "new_clk" won't be mapped to RAM because address size (26) is larger than maximum supported(25)
 INFO: [Synth 8-802] inferred FSM for state register 'present_state_reg' in module 'pmod_step_driver'
-INFO: [Synth 8-5544] ROM "signal2" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "signal" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
@@ -97,7 +97,7 @@ INFO: [Synth 8-5544] ROM "next_state" won't be mapped to Block RAM because addre
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'present_state_reg' using encoding 'sequential' in module 'pmod_step_driver'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:21 . Memory (MB): peak = 1572.375 ; gain = 412.375 ; free physical = 200 ; free virtual = 7277
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:24 . Memory (MB): peak = 1572.371 ; gain = 412.375 ; free physical = 435 ; free virtual = 7040
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -113,7 +113,7 @@ Detailed RTL Component Info :
 	   2 Input     26 Bit       Adders := 1     
 +---Registers : 
 	               26 Bit    Registers := 1     
-	                4 Bit    Registers := 2     
+	                4 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
 +---Muxes : 
 	   2 Input     26 Bit        Muxes := 1     
@@ -142,7 +142,7 @@ Detailed RTL Component Info :
 Module pmod_step_driver 
 Detailed RTL Component Info : 
 +---Registers : 
-	                4 Bit    Registers := 2     
+	                4 Bit    Registers := 1     
 +---Muxes : 
 	   2 Input      4 Bit        Muxes := 1     
 	   2 Input      3 Bit        Muxes := 10    
@@ -166,13 +166,8 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
 INFO: [Synth 8-5545] ROM "clock_Div/new_clk" won't be mapped to RAM because address size (26) is larger than maximum supported(25)
-INFO: [Synth 8-3886] merging instance 'control/signal_reg[0]' (FD) to 'control/signal_reg[3]'
-INFO: [Synth 8-3886] merging instance 'control/signal_reg[1]' (FD) to 'control/signal_reg[3]'
-INFO: [Synth 8-3886] merging instance 'control/signal_reg[2]' (FD) to 'control/signal_reg[3]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\control/signal_reg[3] )
-WARNING: [Synth 8-3332] Sequential element (control/signal_reg[3]) is unused and will be removed from module pmod_step_interface.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:22 . Memory (MB): peak = 1572.375 ; gain = 412.375 ; free physical = 187 ; free virtual = 7268
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:24 . Memory (MB): peak = 1572.371 ; gain = 412.375 ; free physical = 406 ; free virtual = 7031
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -184,13 +179,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:30 . Memory (MB): peak = 1572.375 ; gain = 412.375 ; free physical = 128 ; free virtual = 7144
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:34 . Memory (MB): peak = 1572.371 ; gain = 412.375 ; free physical = 395 ; free virtual = 6959
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:30 . Memory (MB): peak = 1572.375 ; gain = 412.375 ; free physical = 128 ; free virtual = 7144
+Finished Timing Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:34 . Memory (MB): peak = 1572.371 ; gain = 412.375 ; free physical = 395 ; free virtual = 6959
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -202,7 +197,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:30 . Memory (MB): peak = 1580.383 ; gain = 420.383 ; free physical = 132 ; free virtual = 7142
+Finished Technology Mapping : Time (s): cpu = 00:00:20 ; elapsed = 00:00:34 . Memory (MB): peak = 1580.379 ; gain = 420.383 ; free physical = 394 ; free virtual = 6958
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -226,7 +221,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:18 ; elapsed = 00:00:31 . Memory (MB): peak = 1580.383 ; gain = 420.383 ; free physical = 132 ; free virtual = 7143
+Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:34 . Memory (MB): peak = 1580.379 ; gain = 420.383 ; free physical = 394 ; free virtual = 6958
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -239,7 +234,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:18 ; elapsed = 00:00:31 . Memory (MB): peak = 1580.383 ; gain = 420.383 ; free physical = 132 ; free virtual = 7143
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:34 . Memory (MB): peak = 1580.379 ; gain = 420.383 ; free physical = 394 ; free virtual = 6958
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -251,25 +246,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:18 ; elapsed = 00:00:31 . Memory (MB): peak = 1580.383 ; gain = 420.383 ; free physical = 132 ; free virtual = 7143
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:35 . Memory (MB): peak = 1580.379 ; gain = 420.383 ; free physical = 394 ; free virtual = 6958
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:18 ; elapsed = 00:00:31 . Memory (MB): peak = 1580.383 ; gain = 420.383 ; free physical = 132 ; free virtual = 7143
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:35 . Memory (MB): peak = 1580.379 ; gain = 420.383 ; free physical = 394 ; free virtual = 6958
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:31 . Memory (MB): peak = 1580.383 ; gain = 420.383 ; free physical = 132 ; free virtual = 7143
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:35 . Memory (MB): peak = 1580.379 ; gain = 420.383 ; free physical = 394 ; free virtual = 6958
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:18 ; elapsed = 00:00:31 . Memory (MB): peak = 1580.383 ; gain = 420.383 ; free physical = 132 ; free virtual = 7143
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:35 . Memory (MB): peak = 1580.379 ; gain = 420.383 ; free physical = 394 ; free virtual = 6958
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -295,23 +290,23 @@ Report Cell Usage:
 |8     |FDCE   |    30|
 |9     |FDRE   |     4|
 |10    |IBUF   |     4|
-|11    |OBUF   |     8|
+|11    |OBUF   |     4|
 +------+-------+------+
 
 Report Instance Areas: 
 +------+------------+-----------------+------+
 |      |Instance    |Module           |Cells |
 +------+------------+-----------------+------+
-|1     |top         |                 |    95|
+|1     |top         |                 |    91|
 |2     |  clock_Div |clock_div        |    68|
 |3     |  control   |pmod_step_driver |    14|
 +------+------------+-----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:18 ; elapsed = 00:00:31 . Memory (MB): peak = 1580.383 ; gain = 420.383 ; free physical = 132 ; free virtual = 7143
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:35 . Memory (MB): peak = 1580.379 ; gain = 420.383 ; free physical = 394 ; free virtual = 6958
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 1580.383 ; gain = 121.531 ; free physical = 187 ; free virtual = 7197
-Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:31 . Memory (MB): peak = 1580.391 ; gain = 420.383 ; free physical = 187 ; free virtual = 7197
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:18 . Memory (MB): peak = 1580.379 ; gain = 121.531 ; free physical = 448 ; free virtual = 7013
+Synthesis Optimization Complete : Time (s): cpu = 00:00:21 ; elapsed = 00:00:35 . Memory (MB): peak = 1580.387 ; gain = 420.383 ; free physical = 448 ; free virtual = 7013
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 11 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -321,11 +316,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-30 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+26 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:32 . Memory (MB): peak = 1580.391 ; gain = 420.492 ; free physical = 184 ; free virtual = 7195
+synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:36 . Memory (MB): peak = 1580.387 ; gain = 420.492 ; free physical = 446 ; free virtual = 7011
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint '/home/veymax/MASTER_PROJECT/MASTER_PROJECT.runs/synth_1/pmod_step_interface.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file pmod_step_interface_utilization_synth.rpt -pb pmod_step_interface_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.10 . Memory (MB): peak = 1604.395 ; gain = 0.000 ; free physical = 185 ; free virtual = 7196
-INFO: [Common 17-206] Exiting Vivado at Thu Nov 29 15:11:30 2018...
+report_utilization: Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.10 . Memory (MB): peak = 1604.391 ; gain = 0.000 ; free physical = 447 ; free virtual = 7012
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 29 15:47:30 2018...
