@@ -27,8 +27,11 @@ module pmod_step_interface(
     input clk,
     input rst,
     input direction,
+    input direction2,
     input en,
-    output [3:0] signal_out
+    input en2,
+    output [3:0] signal_out,
+    output [3:0] second_signal
     );
     
     // Wire to connect the clock signal 
@@ -53,6 +56,15 @@ module pmod_step_interface(
         .clk(new_clk_net),
         .en(en),
         .signal(signal_out)
-        );    
+        );
+        
+    pmod_second_driver second_control(
+        .rst(rst),
+        .dir(direction2),
+        .clk(new_clk_net),
+        .en(en2),
+        .signal(second_signal)
+        );
+        
     
 endmodule
