@@ -3,7 +3,8 @@ module pmod_step_driver(
     input dir,
     input clk,
     input en,
-    output reg [3:0] signal
+    output reg [3:0] signal,
+    output reg [3:0] signal2
     );
     
     //local parameters that hold the values of 
@@ -132,15 +133,30 @@ module pmod_step_driver(
     always @(posedge clk)
     begin
         if (present_state == sig4)
+            begin
             signal = 4'b1000;
+            signal2 = 4'b1000;
+            end
         else if (present_state == sig3)
+            begin
             signal = 4'b0100;
+            signal2 = 4'b0100;
+            end
         else if (present_state == sig2)
+            begin
             signal = 4'b0010;
+            signal2 = 4'b0010;
+            end
         else if (present_state == sig1)
+            begin
             signal = 4'b0001;
+            signal2 = 4'b0001;
+            end
         else 
+            begin
             signal = 4'b0000;
+            signal2 = 4'b0000;
+            end
             
      end
 endmodule
