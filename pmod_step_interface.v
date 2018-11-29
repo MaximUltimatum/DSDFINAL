@@ -27,7 +27,9 @@ module pmod_step_interface(
     input clk,
     input rst,
     input direction,
+    input direction2,
     input en,
+    input en2,
     output [3:0] signal_out,
     output [3:0] second_signal
     );
@@ -53,8 +55,16 @@ module pmod_step_interface(
         .dir(direction),
         .clk(new_clk_net),
         .en(en),
-        .signal(signal_out),
-        .signal2(second_signal)
-        );    
+        .signal(signal_out)
+        );
+        
+    pmod_second_driver second_control(
+        .rst(rst),
+        .dir(direction2),
+        .clk(new_clk_net),
+        .en(en2),
+        .signal(second_signal)
+        );
+        
     
 endmodule
