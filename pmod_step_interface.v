@@ -44,11 +44,11 @@ module pmod_step_interface(
         );
     
     //TODO Toggle-Lock Module (eventually incorperate limit switches!)
-    toggle_direction1 toggle_lock(rf_input[0], direction[0]) 
-    toggle_direction2 toggle_lock(rf_input[1], direction[1]) 
+    toggle_direction1 toggle_lock(rf_input[0], direction[0]);
+    toggle_direction2 toggle_lock(rf_input[1], direction[1]); 
 
-    toggle_motor1 toggle_motor(rf_input[2], limit_switches[0], enable[0]) 
-    toggle_motor2 toggle_motor(rf_input[3], limit_switches[1], enable[1]) 
+    toggle_motor1 toggle_motor(rf_input[2], limit_switches[0], enable[0]);
+    toggle_motor2 toggle_motor(rf_input[3], limit_switches[1], enable[1]);
 
     
     // The state machine that controls which 

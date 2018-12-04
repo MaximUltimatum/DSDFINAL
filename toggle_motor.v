@@ -5,5 +5,8 @@ module toggle_motor(
     input  sw_in,
     output out
     );
+    
+    wire rf_db_in;
+    wire sw_in;
 
 endmodule
