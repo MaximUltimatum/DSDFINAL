@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date             : Thu Nov 29 16:19:13 2018
+| Date             : Tue Dec  4 15:42:32 2018
 | Host             : bartimaeus running 64-bit Ubuntu 18.10
 | Command          : report_power -file pmod_step_interface_power_routed.rpt -pb pmod_step_interface_power_summary_routed.pb -rpx pmod_step_interface_power_routed.rpx
 | Design           : pmod_step_interface
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.556        |
+| Total On-Chip Power (W)  | 0.660        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.487        |
-| Device Static (W)        | 0.069        |
+| Dynamic (W)              | 0.590        |
+| Device Static (W)        | 0.070        |
 | Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 82.2         |
-| Junction Temperature (C) | 27.8         |
+| Max Ambient (C)          | 81.7         |
+| Junction Temperature (C) | 28.3         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,16 +52,16 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     0.255 |       91 |       --- |             --- |
-|   LUT as Logic |     0.220 |       28 |     20800 |            0.13 |
+| Slice Logic    |     0.300 |      103 |       --- |             --- |
+|   LUT as Logic |     0.264 |       35 |     20800 |            0.17 |
+|   Register     |     0.016 |       41 |     41600 |            0.10 |
 |   CARRY4       |     0.015 |        7 |      8150 |            0.09 |
-|   Register     |     0.014 |       38 |     41600 |            0.09 |
 |   BUFG         |     0.006 |        1 |        32 |            3.13 |
-|   Others       |     0.000 |        4 |       --- |             --- |
-| Signals        |     0.219 |       85 |       --- |             --- |
-| I/O            |     0.012 |       12 |       106 |           11.32 |
-| Static Power   |     0.069 |          |           |                 |
-| Total          |     0.556 |          |           |                 |
+|   Others       |     0.000 |        6 |       --- |             --- |
+| Signals        |     0.270 |       86 |       --- |             --- |
+| I/O            |     0.020 |       14 |       106 |           13.21 |
+| Static Power   |     0.070 |          |           |                 |
+| Total          |     0.660 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -71,7 +71,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.497 |       0.487 |      0.010 |
+| Vccint    |       1.000 |     0.601 |       0.590 |      0.011 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -138,9 +138,10 @@ Table of Contents
 +---------------------+-----------+
 | Name                | Power (W) |
 +---------------------+-----------+
-| pmod_step_interface |     0.487 |
-|   clock_Div         |     0.394 |
-|   control           |     0.062 |
+| pmod_step_interface |     0.590 |
+|   clock_Div         |     0.419 |
+|   control           |     0.047 |
+|   second_control    |     0.047 |
 +---------------------+-----------+
 
 

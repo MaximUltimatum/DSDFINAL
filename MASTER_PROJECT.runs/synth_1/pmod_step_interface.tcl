@@ -17,8 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -32,6 +30,7 @@ set_property ip_output_repo /home/veymax/MASTER_PROJECT/MASTER_PROJECT.cache/ip 
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib {
   /home/veymax/MASTER_PROJECT/clock_div.v
+  /home/veymax/MASTER_PROJECT/MASTER_PROJECT.srcs/sources_1/new/pmod_second_driver.v
   /home/veymax/MASTER_PROJECT/MASTER_PROJECT.srcs/sources_1/new/pmod_step_driver.v
   /home/veymax/MASTER_PROJECT/pmod_step_interface.v
 }

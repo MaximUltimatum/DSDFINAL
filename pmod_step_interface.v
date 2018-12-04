@@ -47,6 +47,10 @@ module pmod_step_interface(
         .rst(rst),
         .new_clk(new_clk_net)
         );
+        
+    //TODO Debounce Module??
+    
+    //TODO Toggle-Lock Module (eventually incorperate limit switches!)
     
     // The state machine that controls which 
     // signal on the stepper motor is high.      
