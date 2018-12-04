@@ -1,14 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: Digilent
-// Engineer: Kaitlyn Franz
-// 
-// Create Date: 01/23/2016 03:44:35 PM
-// Design Name: Claw
-// Module Name: pmod_step_interface
-// Project Name: Claw_game
 // Target Devices: Basys3
-// Tool Versions: 2015.4
+//
 // Description: This module is the top module for a stepper motor controller
 // using the PmodSTEP. It operates in Full Step mode and encludes an enable signal
 // as well as direction control. The Enable signal is connected to switch one and 
@@ -26,10 +19,8 @@
 module pmod_step_interface(
     input clk,
     input rst,
-    input direction,
-    input direction2,
-    input en,
-    input en2,
+    input rf_input [3:0],
+    input limit_switches [1:0].
     output [3:0] signal_out,
     output [3:0] second_signal
     );
@@ -39,7 +30,11 @@ module pmod_step_interface(
     // steps from the clock divider to the 
     // state machine. 
     wire new_clk_net;
-    
+
+    // The wires for controlling direction and stepper enable
+    wire direction [1:0];
+    wire enable [1:0];
+ 
     // Clock Divider to take the on-board clock
     // to the desired frequency.
     clock_div clock_Div(
@@ -47,26 +42,30 @@ module pmod_step_interface(
         .rst(rst),
         .new_clk(new_clk_net)
         );
-        
-    //TODO Debounce Module??
     
     //TODO Toggle-Lock Module (eventually incorperate limit switches!)
+    toggle_direction1 toggle_lock(rf_input[0], direction[0]) 
+    toggle_direction2 toggle_lock(rf_input[1], direction[1]) 
+
+    toggle_motor1 toggle_motor(rf_input[2], limit_switches[0], enable[0]) 
+    toggle_motor2 toggle_motor(rf_input[3], limit_switches[1], enable[1]) 
+
     
     // The state machine that controls which 
     // signal on the stepper motor is high.      
     pmod_step_driver control(
         .rst(rst),
-        .dir(direction),
+        .dir(direction[1]),
         .clk(new_clk_net),
-        .en(en),
+        .en(enable[1]),
         .signal(signal_out)
         );
         
     pmod_second_driver second_control(
         .rst(rst),
-        .dir(direction2),
+        .dir(direction[0]),
         .clk(new_clk_net),
-        .en(en2),
+        .en(enable[0]),
         .signal(second_signal)
         );
         
