@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date                      : Tue Dec  4 15:42:15 2018
+| Date                      : Thu Dec  6 14:13:34 2018
 | Host                      : bartimaeus running 64-bit Ubuntu 18.10
 | Command                   : report_io -file pmod_step_interface_io_placed.rpt
 | Design                    : pmod_step_interface
@@ -25,7 +25,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|            14 |
+|            16 |
 +---------------+
 
 
@@ -112,7 +112,7 @@ Table of Contents
 | F19        |                  |            | GND                          | GND           |             |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |
 | G1         |                  |            | GND                          | GND           |             |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |
 | G2         |                  | High Range | IO_L1N_T0_AD4N_35            | User IO       |             |      35 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
-| G3         | direction2       | High Range | IO_L1P_T0_AD4P_35            | INPUT         | LVCMOS33    |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
+| G3         | rf_input[3]      | High Range | IO_L1P_T0_AD4P_35            | INPUT         | LVCMOS33    |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | G7         |                  |            | MGTAVTT                      | Gigabit Power |             |         |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | G8         |                  |            | GND                          | GND           |             |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |
 | G9         |                  |            | MGTAVCC                      | Gigabit Power |             |         |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
@@ -123,8 +123,8 @@ Table of Contents
 | G17        |                  | High Range | IO_L5N_T0_D07_14             | User IO       |             |      14 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | G18        |                  | High Range | IO_L2P_T0_D02_14             | User IO       |             |      14 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | G19        |                  | High Range | IO_L4N_T0_D05_14             | User IO       |             |      14 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
-| H1         | en               | High Range | IO_L3P_T0_DQS_AD5P_35        | INPUT         | LVCMOS33    |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
-| H2         | en2              | High Range | IO_L2P_T0_AD12P_35           | INPUT         | LVCMOS33    |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
+| H1         | rf_input[0]      | High Range | IO_L3P_T0_DQS_AD5P_35        | INPUT         | LVCMOS33    |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
+| H2         | rf_input[2]      | High Range | IO_L2P_T0_AD12P_35           | INPUT         | LVCMOS33    |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | H3         |                  | High Range | VCCO_35                      | VCCO          |             |      35 |            |      |                     |                      |    3.30 |            |           |          |      |                  |              |                   |              |
 | H7         |                  |            | GND                          | GND           |             |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |
 | H8         |                  |            | GND                          | GND           |             |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |
@@ -150,7 +150,7 @@ Table of Contents
 | J18        |                  | High Range | IO_L7N_T1_D10_14             | User IO       |             |      14 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | J19        |                  | High Range | IO_L6N_T0_D08_VREF_14        | User IO       |             |      14 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | K1         |                  | High Range | VCCO_35                      | VCCO          |             |      35 |            |      |                     |                      |    3.30 |            |           |          |      |                  |              |                   |              |
-| K2         | direction        | High Range | IO_L5P_T0_AD13P_35           | INPUT         | LVCMOS33    |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
+| K2         | rf_input[1]      | High Range | IO_L5P_T0_AD13P_35           | INPUT         | LVCMOS33    |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | K3         |                  | High Range | IO_L7N_T1_AD6N_35            | User IO       |             |      35 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | K7         |                  | High Range | VCCO_35                      | VCCO          |             |      35 |            |      |                     |                      |    3.30 |            |           |          |      |                  |              |                   |              |
 | K8         |                  |            | GND                          | GND           |             |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |
