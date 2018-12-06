@@ -26,10 +26,8 @@
 module pmod_step_interface(
     input clk,
     input rst,
-    input direction,
-    input direction2,
-    input en,
-    input en2,
+    input [3:0] rf_input,
+    input [1:0] limit_switches,
     output [3:0] signal_out,
     output [3:0] second_signal
     );
@@ -39,6 +37,8 @@ module pmod_step_interface(
     // steps from the clock divider to the 
     // state machine. 
     wire new_clk_net;
+    wire [3:0] rf_bounced;
+    wire [1:0] limit_bounced;
     
     // Clock Divider to take the on-board clock
     // to the desired frequency.
@@ -49,24 +49,29 @@ module pmod_step_interface(
         );
         
     //TODO Debounce Module??
-    
+    debounceplz debounce_buttons(
+        .clk(clk),
+        .reset(rst),
+        .sw(rf_input),
+        .db(rf_bounced)
+        );
     //TODO Toggle-Lock Module (eventually incorperate limit switches!)
     
     // The state machine that controls which 
     // signal on the stepper motor is high.      
     pmod_step_driver control(
         .rst(rst),
-        .dir(direction),
+        .dir(rf_bounced[0]),
         .clk(new_clk_net),
-        .en(en),
+        .en(rf_bounced[1]),
         .signal(signal_out)
         );
         
     pmod_second_driver second_control(
         .rst(rst),
-        .dir(direction2),
+        .dir(rf_bounced[2]),
         .clk(new_clk_net),
-        .en(en2),
+        .en(rf_bounced[3]),
         .signal(second_signal)
         );
         
