@@ -4,37 +4,35 @@
 //
 // Description: This module is the top module for a stepper motor controller
 // using the PmodSTEP. It operates in Full Step mode and encludes an enable signal
-// as well as direction control. The Enable signal is connected to switch one and 
-// the direction signal is connected to switch zero. 
-// 
-// Dependencies: 
-// 
+// as well as direction control. The Enable signal is connected to switch one and
+// the direction signal is connected to switch zero.
+//
+// Dependencies:
+//
 // Revision: 1
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
 
 
 module pmod_step_interface(
     input clk,
     input rst,
-    input rf_input [3:0],
-    input limit_switches [1:0].
+    input [3:0] rf_input,
+    input [1:0] limit_switches,
     output [3:0] signal_out,
     output [3:0] second_signal
     );
-    
-    // Wire to connect the clock signal 
-    // that controls the speed that the motor
-    // steps from the clock divider to the 
-    // state machine. 
-    wire new_clk_net;
 
-    // The wires for controlling direction and stepper enable
-    wire direction [1:0];
-    wire enable [1:0];
- 
+    // Wire to connect the clock signal
+    // that controls the speed that the motor
+    // steps from the clock divider to the
+    // state machine.
+    wire new_clk_net;
+    wire [3:0] rf_bounced;
+    wire [1:0] limit_bounced;
+
     // Clock Divider to take the on-board clock
     // to the desired frequency.
     clock_div clock_Div(
@@ -42,32 +40,74 @@ module pmod_step_interface(
         .rst(rst),
         .new_clk(new_clk_net)
         );
-    
+
+    //TODO Debounce Module??
+    debounceplz debounce_button0(
+        .clk(clk),
+        .reset(rst),
+        .sw(rf_input[0]),
+        .db(rf_bounced[0])
+        );
+
+    debounceplz debounce_button1(
+        .clk(clk),
+        .reset(rst),
+        .sw(rf_input[1]),
+        .db(rf_bounced[1])
+        );
+
+    debounceplz debounce_button2(
+            .clk(clk),
+            .reset(rst),
+            .sw(rf_input[2]),
+            .db(rf_bounced[2])
+            );
+
+    debounceplz debounce_button3(
+            .clk(clk),
+            .reset(rst),
+            .sw(rf_input[3]),
+            .db(rf_bounced[3])
+            );
+
+    debounceplz debounce_limit0(
+            .clk(clk),
+            .reset(rst),
+            .sw(limit_switches[0]),
+            .db(limit_bounced[0])
+            );
+
+    debounceplz debounce_limit1(
+            .clk(clk),
+            .reset(rst),
+            .sw(limit_switches[1]),
+            .db(limit_bounced[1])
+            );
     //TODO Toggle-Lock Module (eventually incorperate limit switches!)
     toggle_direction1 toggle_lock(rf_input[0], direction[0]);
-    toggle_direction2 toggle_lock(rf_input[1], direction[1]); 
+    toggle_direction2 toggle_lock(rf_input[1], direction[1]);
 
     toggle_motor1 toggle_motor(rf_input[2], limit_switches[0], enable[0]);
     toggle_motor2 toggle_motor(rf_input[3], limit_switches[1], enable[1]);
 
-    
-    // The state machine that controls which 
-    // signal on the stepper motor is high.      
+
+    // The state machine that controls which
+    // signal on the stepper motor is high.
     pmod_step_driver control(
         .rst(rst),
-        .dir(direction[1]),
+        .dir(rf_bounced[0]),
         .clk(new_clk_net),
-        .en(enable[1]),
+        .en(rf_bounced[1]),
         .signal(signal_out)
         );
-        
+
     pmod_second_driver second_control(
         .rst(rst),
-        .dir(direction[0]),
+        .dir(rf_bounced[2]),
         .clk(new_clk_net),
-        .en(enable[0]),
+        .en(rf_bounced[3]),
         .signal(second_signal)
         );
-        
-    
+
+
 endmodule
