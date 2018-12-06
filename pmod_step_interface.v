@@ -49,12 +49,47 @@ module pmod_step_interface(
         );
         
     //TODO Debounce Module??
-    debounceplz debounce_buttons(
+    debounceplz debounce_button0(
         .clk(clk),
         .reset(rst),
-        .sw(rf_input),
-        .db(rf_bounced)
+        .sw(rf_input[0]),
+        .db(rf_bounced[0])
         );
+        
+    debounceplz debounce_button1(
+        .clk(clk),
+        .reset(rst),
+        .sw(rf_input[1]),
+        .db(rf_bounced[1])
+        );
+        
+    debounceplz debounce_button2(
+            .clk(clk),
+            .reset(rst),
+            .sw(rf_input[2]),
+            .db(rf_bounced[2])
+            );
+            
+    debounceplz debounce_button3(
+            .clk(clk),
+            .reset(rst),
+            .sw(rf_input[3]),
+            .db(rf_bounced[3])
+            );
+            
+    debounceplz debounce_limit0(
+            .clk(clk),
+            .reset(rst),
+            .sw(limit_switches[0]),
+            .db(limit_bounced[0])
+            );
+            
+    debounceplz debounce_limit1(
+            .clk(clk),
+            .reset(rst),
+            .sw(limit_switches[1]),
+            .db(limit_bounced[1])
+            );
     //TODO Toggle-Lock Module (eventually incorperate limit switches!)
     
     // The state machine that controls which 
