@@ -1,4 +1,4 @@
-module pmod_step_driver(
+module pmod_second_driver(
     input rst,
     input dir,
     input clk,
