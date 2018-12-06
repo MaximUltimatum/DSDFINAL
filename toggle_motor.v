@@ -1,12 +1,26 @@
 `timescale 1ns / 1ps
 
 module toggle_motor(
-    input  rf_in,
-    input  sw_in,
+    input  rf,
+    input  sw,
     output out
     );
     
-    wire rf_db_in;
-    wire sw_in;
+    reg mem;
+    
+    always @(posedge rf or posedge sw)
+    begin
+        if (sw == 1)
+            if (mem == 1)
+                mem <= 0;
+        else 
+            if (rf == 1)
+                if (mem == 1)
+                    mem <= 0;
+                else
+                    mem <= 1;
+    end
 
+    assign out = mem;
+    
 endmodule

@@ -5,4 +5,17 @@ module toggle_lock(
     output out
     );
 
+    reg mem;
+    
+        
+    always @(posedge in)
+    begin
+        if (mem == 0)
+            mem <= 1;
+        else
+            mem <= 0;
+    end
+    
+    assign out = mem;
+       
 endmodule
