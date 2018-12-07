@@ -1,20 +1,27 @@
 `timescale 1ns / 1ps
 
 module toggle_motor(
+    input clk,
+    input reset,
     input  rf,
     input  sw,
     output out
     );
     
     reg mem;
+    wire db_rf;
+    wire db_sw;
     
-    always @(posedge rf or posedge sw)
+    debounceplz db(clk, reset, rf, db_rf);
+    debounceplz db2(clk, reset, sw, db_sw);    
+    
+    always @(posedge db_rf or posedge db_sw )
     begin
-        if (sw == 1)
+        if (db_sw == 1)
             if (mem == 1)
                 mem <= 0;
         else 
-            if (rf == 1)
+            if (db_rf == 1)
                 if (mem == 1)
                     mem <= 0;
                 else

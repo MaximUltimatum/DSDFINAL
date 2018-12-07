@@ -1,5 +1,5 @@
-MASTER_PROJECT.cache/**/*
-MASTER_PROJECT.hw/**/*
-MASTER_PROJECT.ip_user_files/**/*
-MASTER_PROJECT.runs/**/*
+*.cache/**/*
+*.hw/**/*
+*.ip_user_files/**/*
+*.runs/**/*
 *.xpr

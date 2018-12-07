@@ -20,7 +20,7 @@ module pmod_step_interface(
     input clk,
     input rst,
     input [3:0] rf_input,
-    input [1:0] limit_switches,
+    input [1:0] limit,
     output [3:0] signal_out,
     output [3:0] second_signal
     );
@@ -29,9 +29,9 @@ module pmod_step_interface(
     // that controls the speed that the motor
     // steps from the clock divider to the
     // state machine.
-    wire new_clk_net;
-    wire [3:0] rf_bounced;
-    wire [1:0] limit_bounced;
+    wire new_clk_net;    
+    wire [1:0] enabled;
+    wire [1:0] direction;
 
     // Clock Divider to take the on-board clock
     // to the desired frequency.
@@ -41,71 +41,29 @@ module pmod_step_interface(
         .new_clk(new_clk_net)
         );
 
-    //TODO Debounce Module??
-    debounceplz debounce_button0(
-        .clk(clk),
-        .reset(rst),
-        .sw(rf_input[0]),
-        .db(rf_bounced[0])
-        );
-
-    debounceplz debounce_button1(
-        .clk(clk),
-        .reset(rst),
-        .sw(rf_input[1]),
-        .db(rf_bounced[1])
-        );
-
-    debounceplz debounce_button2(
-            .clk(clk),
-            .reset(rst),
-            .sw(rf_input[2]),
-            .db(rf_bounced[2])
-            );
-
-    debounceplz debounce_button3(
-            .clk(clk),
-            .reset(rst),
-            .sw(rf_input[3]),
-            .db(rf_bounced[3])
-            );
-
-    debounceplz debounce_limit0(
-            .clk(clk),
-            .reset(rst),
-            .sw(limit_switches[0]),
-            .db(limit_bounced[0])
-            );
-
-    debounceplz debounce_limit1(
-            .clk(clk),
-            .reset(rst),
-            .sw(limit_switches[1]),
-            .db(limit_bounced[1])
-            );
     //TODO Toggle-Lock Module (eventually incorperate limit switches!)
-    toggle_direction1 toggle_lock(rf_input[0], direction[0]);
-    toggle_direction2 toggle_lock(rf_input[1], direction[1]);
+    toggle_lock toggle_direction1 (clk, rst, rf_input[0], direction[0]);
+    toggle_lock toggle_direction2 (clk, rst, rf_input[1], direction[1]);
 
-    toggle_motor1 toggle_motor(rf_input[2], limit_switches[0], enable[0]);
-    toggle_motor2 toggle_motor(rf_input[3], limit_switches[1], enable[1]);
+    toggle_motor toggle_motor1(clk, rst, rf_input[2], limit[0], enabled[0]);
+    toggle_motor toggle_motor2(clk, rst, rf_input[3], limit[1], enabled[1]);
 
 
     // The state machine that controls which
     // signal on the stepper motor is high.
     pmod_step_driver control(
         .rst(rst),
-        .dir(rf_bounced[0]),
+        .dir(direction[0]),
         .clk(new_clk_net),
-        .en(rf_bounced[1]),
+        .en(enabled[0]),
         .signal(signal_out)
         );
 
     pmod_second_driver second_control(
         .rst(rst),
-        .dir(rf_bounced[2]),
+        .dir(direction[1]),
         .clk(new_clk_net),
-        .en(rf_bounced[3]),
+        .en(enabled[1]),
         .signal(second_signal)
         );
 
