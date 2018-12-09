@@ -3,6 +3,7 @@ module pmod_step_driver(
     input dir,
     input clk,
     input en,
+    input turnoff,
     output reg [3:0] signal
     );
     
@@ -130,7 +131,7 @@ module pmod_step_driver(
     // output signal has a different
     // value.
     always @(posedge clk)
-    begin
+    begin   
         if (present_state == sig4)
             begin
             signal = 4'b1000;

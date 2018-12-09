@@ -24,21 +24,20 @@
 
 
 module pmod_step_interface(
-    input clk,
-    input rst,
-    input [3:0] rf_input,
+    input clk, //input clock
+    input rst, //reset input
+    input [3:0] rf_input, //input from button clicker
     input [1:0] limit_switches,
-    output [3:0] signal_out,
-    output [3:0] second_signal
+    output [3:0] signal_out, //output to motor
+    output [3:0] second_signal //output to motor2
     );
     
-    // Wire to connect the clock signal 
-    // that controls the speed that the motor
-    // steps from the clock divider to the 
-    // state machine. 
+    //Temporary variables.
     wire new_clk_net;
     wire [3:0] rf_bounced;
     wire [1:0] limit_bounced;
+    reg [3:0] rf_toggled;
+    reg [1:0] limit_toggled;
     
     // Clock Divider to take the on-board clock
     // to the desired frequency.
@@ -48,7 +47,7 @@ module pmod_step_interface(
         .new_clk(new_clk_net)
         );
         
-    //TODO Debounce Module??
+    //Debounce Modules
     debounceplz debounce_button0(
         .clk(clk),
         .reset(rst),
@@ -90,23 +89,72 @@ module pmod_step_interface(
             .sw(limit_switches[1]),
             .db(limit_bounced[1])
             );
-    //TODO Toggle-Lock Module (eventually incorperate limit switches!)
+    
+    
+    //Toggle-Lock Module
+    always @ (posedge rf_bounced[0])
+        begin
+        if(rf_toggled[0] == 1'b1)
+            rf_toggled[0] <= 1'b0;
+        else
+            rf_toggled[0] <= 1'b1;
+        end
+        
+    always @ (posedge rf_bounced[1])
+        begin
+        if(rf_toggled[1] == 1'b1)
+            rf_toggled[1] <= 1'b0;
+        else
+            rf_toggled[1] <= 1'b1;
+        end
+        
+    always @ (posedge rf_bounced[2])
+        begin
+        if(rf_toggled[2] == 1'b1)
+            rf_toggled[2] <= 1'b0;
+        else
+            rf_toggled[2] <= 1'b1;
+        end
+        
+    always @ (posedge rf_bounced[3])
+        begin
+        if(rf_toggled[3] == 1'b1)
+            rf_toggled[3] <= 1'b0;
+        else
+            rf_toggled[3] <= 1'b1;
+        end
+        
+    always @ (posedge limit_bounced[0])
+        begin
+        if(limit_toggled[0] == 1'b1)
+            limit_toggled[0] <= 1'b0;
+        else
+            limit_toggled[0] <= 1'b1;
+        end
+        
+    always @ (posedge limit_bounced[1])
+        begin
+        if(limit_toggled[1] == 1'b1)
+            limit_toggled[1] <= 1'b0;
+        else
+            limit_toggled[1] <= 1'b1;
+        end
     
     // The state machine that controls which 
     // signal on the stepper motor is high.      
     pmod_step_driver control(
         .rst(rst),
-        .dir(rf_bounced[0]),
+        .dir(rf_toggled[0]),
         .clk(new_clk_net),
-        .en(rf_bounced[1]),
+        .en(rf_toggled[1]),
         .signal(signal_out)
         );
         
     pmod_second_driver second_control(
         .rst(rst),
-        .dir(rf_bounced[2]),
+        .dir(rf_toggled[2]),
         .clk(new_clk_net),
-        .en(rf_bounced[3]),
+        .en(rf_toggled[3]),
         .signal(second_signal)
         );
         
