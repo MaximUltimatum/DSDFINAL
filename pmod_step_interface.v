@@ -30,6 +30,7 @@ module pmod_step_interface(
     input [1:0] limit_switches,
     output [3:0] signal_out, //output to motor
     output [3:0] second_signal //output to motor2
+    //output [5:0] LED
     );
     
     //Temporary variables.
@@ -37,7 +38,11 @@ module pmod_step_interface(
     wire [3:0] rf_bounced;
     wire [1:0] limit_bounced;
     reg [3:0] rf_toggled;
-    reg [1:0] limit_toggled;
+//    wire [3:0] rf_toggled_wire;
+    
+//    assign rf_toggled_wire[3:0] = rf_toggled[3:0];
+//    assign LED[3:0] = rf_toggled_wire[3:0];
+//    assign LED[5:4] = limit_bounced[1:0];
     
     // Clock Divider to take the on-board clock
     // to the desired frequency.
@@ -98,6 +103,9 @@ module pmod_step_interface(
             rf_toggled[0] <= 1'b0;
         else
             rf_toggled[0] <= 1'b1;
+            
+//        if(limit_bounced[0] == 1'b1)
+//            rf_toggled <= 1'b0;
         end
         
     always @ (posedge rf_bounced[1])
@@ -106,6 +114,9 @@ module pmod_step_interface(
             rf_toggled[1] <= 1'b0;
         else
             rf_toggled[1] <= 1'b1;
+            
+//        if(limit_bounced[0] == 1'b1)
+//            rf_toggled <= 1'b0;
         end
         
     always @ (posedge rf_bounced[2])
@@ -114,6 +125,9 @@ module pmod_step_interface(
             rf_toggled[2] <= 1'b0;
         else
             rf_toggled[2] <= 1'b1;
+            
+//        if(limit_bounced[1] == 1'b1)
+//            rf_toggled <= 1'b0;
         end
         
     always @ (posedge rf_bounced[3])
@@ -122,23 +136,24 @@ module pmod_step_interface(
             rf_toggled[3] <= 1'b0;
         else
             rf_toggled[3] <= 1'b1;
+            
+//        if(limit_bounced[1] == 1'b1)
+//            rf_toggled <= 1'b0;
         end
         
-    always @ (posedge limit_bounced[0])
-        begin
-        if(limit_toggled[0] == 1'b1)
-            limit_toggled[0] <= 1'b0;
-        else
-            limit_toggled[0] <= 1'b1;
-        end
+//    always @ (posedge limit_bounced[0])
+//        begin
+//            if(limit_bounced[0] == 1'b1)
+//                rf_toggled[0] <= 1'b0;
+//                rf_toggled[1] <= 1'b0;
+//        end
         
-    always @ (posedge limit_bounced[1])
-        begin
-        if(limit_toggled[1] == 1'b1)
-            limit_toggled[1] <= 1'b0;
-        else
-            limit_toggled[1] <= 1'b1;
-        end
+//    always @ (posedge limit_bounced[1])
+//        begin
+//            if(limit_bounced[1] == 1'b1)
+//                rf_toggled[2] <= 1'b0;
+//                rf_toggled[3] <= 1'b0;
+//        end
     
     // The state machine that controls which 
     // signal on the stepper motor is high.      
