@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date         : Thu Dec  6 15:12:53 2018
+| Date         : Sat Dec 15 14:26:27 2018
 | Host         : bartimaeus running 64-bit Ubuntu 18.10
 | Command      : report_control_sets -verbose -file pmod_step_interface_control_sets_placed.rpt
 | Design       : pmod_step_interface
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |     8 |
-| Unused register locations in slices containing registers |     8 |
+| Number of unique control sets                            |    16 |
+| Unused register locations in slices containing registers |    56 |
 +----------------------------------------------------------+-------+
 
 
@@ -34,6 +34,7 @@ Table of Contents
 +--------+--------------+
 | Fanout | Control Sets |
 +--------+--------------+
+|      2 |            8 |
 |     12 |            1 |
 |    16+ |            7 |
 +--------+--------------+
@@ -45,29 +46,37 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              54 |            7 |
+| No           | No                    | No                     |              62 |           11 |
 | No           | No                    | Yes                    |              66 |            9 |
 | No           | Yes                   | No                     |               0 |            0 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |              64 |           11 |
-| Yes          | Yes                   | No                     |               0 |            0 |
+| Yes          | Yes                   | No                     |               8 |            4 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------+-----------------------------------------------------+------------------+------------------+----------------+
-|  Clock Signal  |                    Enable Signal                    | Set/Reset Signal | Slice Load Count | Bel Load Count |
-+----------------+-----------------------------------------------------+------------------+------------------+----------------+
-|  clock_Div/CLK |                                                     | rst_IBUF         |                3 |             12 |
-|  clk_IBUF_BUFG | debounce_button0/FSM_onehot_state_reg[7]_i_1_n_0    | rst_IBUF         |                3 |             16 |
-|  clk_IBUF_BUFG | debounce_button1/FSM_onehot_state_reg[7]_i_1__4_n_0 | rst_IBUF         |                2 |             16 |
-|  clk_IBUF_BUFG | debounce_button2/FSM_onehot_state_reg[7]_i_1__3_n_0 | rst_IBUF         |                3 |             16 |
-|  clk_IBUF_BUFG | debounce_button3/FSM_onehot_state_reg[7]_i_1__2_n_0 | rst_IBUF         |                3 |             16 |
-|  clock_Div/CLK |                                                     |                  |                2 |             16 |
-|  clk_IBUF_BUFG |                                                     |                  |                5 |             38 |
-|  clk_IBUF_BUFG |                                                     | rst_IBUF         |                6 |             54 |
-+----------------+-----------------------------------------------------+------------------+------------------+----------------+
++--------------------------------+-----------------------------------------------------+--------------------------------+------------------+----------------+
+|          Clock Signal          |                    Enable Signal                    |        Set/Reset Signal        | Slice Load Count | Bel Load Count |
++--------------------------------+-----------------------------------------------------+--------------------------------+------------------+----------------+
+|  debounce_button0/rf_bounced_0 |                                                     |                                |                1 |              2 |
+|  debounce_button0/rf_bounced_0 | control/p_0_in[0]                                   | control/dirT_i_1_n_0           |                1 |              2 |
+|  debounce_button1/rf_bounced_1 |                                                     |                                |                1 |              2 |
+|  debounce_button1/rf_bounced_1 | control/p_0_in[1]                                   | control/enT_i_1_n_0            |                1 |              2 |
+|  debounce_button2/rf_bounced_2 |                                                     |                                |                1 |              2 |
+|  debounce_button2/rf_bounced_2 | second_control/p_0_in[0]                            | second_control/dirT_i_1__0_n_0 |                1 |              2 |
+|  debounce_button3/rf_bounced_3 |                                                     |                                |                1 |              2 |
+|  debounce_button3/rf_bounced_3 | second_control/p_0_in[1]                            | second_control/enT_i_1__0_n_0  |                1 |              2 |
+|  clock_Div/CLK                 |                                                     | rst_IBUF                       |                3 |             12 |
+|  clk_IBUF_BUFG                 | debounce_button0/FSM_onehot_state_reg[7]_i_1_n_0    | rst_IBUF                       |                3 |             16 |
+|  clk_IBUF_BUFG                 | debounce_button1/FSM_onehot_state_reg[7]_i_1__4_n_0 | rst_IBUF                       |                3 |             16 |
+|  clk_IBUF_BUFG                 | debounce_button2/FSM_onehot_state_reg[7]_i_1__3_n_0 | rst_IBUF                       |                3 |             16 |
+|  clk_IBUF_BUFG                 | debounce_button3/FSM_onehot_state_reg[7]_i_1__2_n_0 | rst_IBUF                       |                2 |             16 |
+|  clock_Div/CLK                 |                                                     |                                |                2 |             16 |
+|  clk_IBUF_BUFG                 |                                                     |                                |                5 |             38 |
+|  clk_IBUF_BUFG                 |                                                     | rst_IBUF                       |                6 |             54 |
++--------------------------------+-----------------------------------------------------+--------------------------------+------------------+----------------+
 
 

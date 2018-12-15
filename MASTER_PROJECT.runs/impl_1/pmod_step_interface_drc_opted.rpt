@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date         : Thu Dec  6 15:12:50 2018
+| Date         : Sat Dec 15 14:26:24 2018
 | Host         : bartimaeus running 64-bit Ubuntu 18.10
 | Command      : report_drc -file pmod_step_interface_drc_opted.rpt -pb pmod_step_interface_drc_opted.pb -rpx pmod_step_interface_drc_opted.rpx
 | Design       : pmod_step_interface
@@ -24,12 +24,45 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 0
-+------+----------+-------------+------------+
-| Rule | Severity | Description | Violations |
-+------+----------+-------------+------------+
-+------+----------+-------------+------------+
+             Violations found: 4
++-------------+----------+-------------------------------------------------------------+------------+
+| Rule        | Severity | Description                                                 | Violations |
++-------------+----------+-------------------------------------------------------------+------------+
+| PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 4          |
++-------------+----------+-------------------------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+PLHOLDVIO-2#1 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT debounce_button0/dirT_i_2 is driving clock pin of 2 cells. This could lead to large hold time violations. First few involved cells are:
+    control/LEDz_reg[1] {FDSE}
+    control/dirT_reg {FDRE}
+
+Related violations: <none>
+
+PLHOLDVIO-2#2 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT debounce_button1/enT_i_2 is driving clock pin of 2 cells. This could lead to large hold time violations. First few involved cells are:
+    control/LEDz_reg[0] {FDSE}
+    control/enT_reg {FDRE}
+
+Related violations: <none>
+
+PLHOLDVIO-2#3 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT debounce_button2/dirT_i_2__0 is driving clock pin of 2 cells. This could lead to large hold time violations. First few involved cells are:
+    second_control/LED2z_reg[1] {FDSE}
+    second_control/dirT_reg {FDRE}
+
+Related violations: <none>
+
+PLHOLDVIO-2#4 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT debounce_button3/enT_i_2__0 is driving clock pin of 2 cells. This could lead to large hold time violations. First few involved cells are:
+    second_control/LED2z_reg[0] {FDSE}
+    second_control/enT_reg {FDRE}
+
+Related violations: <none>
+
 

@@ -29,7 +29,8 @@ module pmod_step_interface(
     input [3:0] rf_input,
     input [1:0] limit_switches,
     output [3:0] signal_out,
-    output [3:0] second_signal
+    output [3:0] second_signal,
+    output [5:0] LED
     );
     
     // Wire to connect the clock signal 
@@ -99,7 +100,8 @@ module pmod_step_interface(
         .dir(rf_bounced[0]),
         .clk(new_clk_net),
         .en(rf_bounced[1]),
-        .signal(signal_out)
+        .signal(signal_out),
+        .LEDz(LED[2:0])
         );
         
     pmod_second_driver second_control(
@@ -107,7 +109,8 @@ module pmod_step_interface(
         .dir(rf_bounced[2]),
         .clk(new_clk_net),
         .en(rf_bounced[3]),
-        .signal(second_signal)
+        .signal(second_signal),
+        .LED2z(LED[5:3])
         );
         
     

@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date         : Thu Dec  6 15:13:13 2018
+| Date         : Sat Dec 15 14:26:47 2018
 | Host         : bartimaeus running 64-bit Ubuntu 18.10
 | Command      : report_timing_summary -max_paths 10 -file pmod_step_interface_timing_summary_routed.rpt -pb pmod_step_interface_timing_summary_routed.pb -rpx pmod_step_interface_timing_summary_routed.rpx -warn_on_violation
 | Design       : pmod_step_interface
@@ -56,6 +56,38 @@ Table of Contents
 
  There are 14 register/latch pins with no clock driven by root clock pin: clock_Div/new_clk_reg/Q (HIGH)
 
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button0/FSM_onehot_state_reg_reg[4]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button0/FSM_onehot_state_reg_reg[5]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button0/FSM_onehot_state_reg_reg[6]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button0/FSM_onehot_state_reg_reg[7]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button1/FSM_onehot_state_reg_reg[4]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button1/FSM_onehot_state_reg_reg[5]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button1/FSM_onehot_state_reg_reg[6]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button1/FSM_onehot_state_reg_reg[7]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button2/FSM_onehot_state_reg_reg[4]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button2/FSM_onehot_state_reg_reg[5]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button2/FSM_onehot_state_reg_reg[6]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button2/FSM_onehot_state_reg_reg[7]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button3/FSM_onehot_state_reg_reg[4]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button3/FSM_onehot_state_reg_reg[5]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button3/FSM_onehot_state_reg_reg[6]/Q (HIGH)
+
+ There are 2 register/latch pins with no clock driven by root clock pin: debounce_button3/FSM_onehot_state_reg_reg[7]/Q (HIGH)
+
 
 2. checking constant_clock
 --------------------------
@@ -69,7 +101,7 @@ Table of Contents
 
 4. checking unconstrained_internal_endpoints
 --------------------------------------------
- There are 189 pins that are not constrained for maximum delay. (HIGH)
+ There are 201 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
@@ -83,7 +115,7 @@ Table of Contents
 
 6. checking no_output_delay
 ---------------------------
- There are 8 ports with no output delay specified. (HIGH)
+ There are 12 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 

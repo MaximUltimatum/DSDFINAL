@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date             : Thu Dec  6 15:13:13 2018
+| Date             : Sat Dec 15 14:26:46 2018
 | Host             : bartimaeus running 64-bit Ubuntu 18.10
 | Command          : report_power -file pmod_step_interface_power_routed.rpt -pb pmod_step_interface_power_summary_routed.pb -rpx pmod_step_interface_power_routed.rpx
 | Design           : pmod_step_interface
@@ -29,20 +29,20 @@ Table of Contents
 1. Summary
 ----------
 
-+--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.944        |
-| Design Power Budget (W)  | Unspecified* |
-| Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.873        |
-| Device Static (W)        | 0.070        |
-| Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 80.3         |
-| Junction Temperature (C) | 29.7         |
-| Confidence Level         | Low          |
-| Setting File             | ---          |
-| Simulation Activity File | ---          |
-| Design Nets Matched      | NA           |
-+--------------------------+--------------+
++--------------------------+----------------------------------+
+| Total On-Chip Power (W)  | 25.325 (Junction temp exceeded!) |
+| Design Power Budget (W)  | Unspecified*                     |
+| Power Budget Margin (W)  | NA                               |
+| Dynamic (W)              | 24.839                           |
+| Device Static (W)        | 0.486                            |
+| Effective TJA (C/W)      | 5.0                              |
+| Max Ambient (C)          | 0.0                              |
+| Junction Temperature (C) | 125.0                            |
+| Confidence Level         | Low                              |
+| Setting File             | ---                              |
+| Simulation Activity File | ---                              |
+| Design Nets Matched      | NA                               |
++--------------------------+----------------------------------+
 * Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
 
 
@@ -52,16 +52,16 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     0.458 |      206 |       --- |             --- |
-|   LUT as Logic |     0.398 |       80 |     20800 |            0.38 |
-|   Register     |     0.028 |       92 |     41600 |            0.22 |
+| Slice Logic    |     0.620 |      225 |       --- |             --- |
+|   LUT as Logic |     0.539 |       90 |     20800 |            0.43 |
+|   Register     |     0.049 |      100 |     41600 |            0.24 |
 |   CARRY4       |     0.026 |       12 |      8150 |            0.15 |
 |   BUFG         |     0.006 |        1 |        32 |            3.13 |
-|   Others       |     0.000 |        8 |       --- |             --- |
-| Signals        |     0.395 |      161 |       --- |             --- |
-| I/O            |     0.020 |       14 |       106 |           13.21 |
-| Static Power   |     0.070 |          |           |                 |
-| Total          |     0.944 |          |           |                 |
+|   Others       |     0.000 |        9 |       --- |             --- |
+| Signals        |     0.881 |      179 |       --- |             --- |
+| I/O            |    23.338 |       20 |       106 |           18.87 |
+| Static Power   |     0.486 |          |           |                 |
+| Total          |    25.325 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -71,16 +71,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.884 |       0.873 |      0.011 |
-| Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
-| Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |
+| Vccint    |       1.000 |     1.862 |       1.521 |      0.341 |
+| Vccaux    |       1.800 |     0.908 |       0.854 |      0.053 |
+| Vcco33    |       3.300 |     6.601 |       6.600 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.000 |       0.000 |      0.000 |
+| Vccbram   |       1.000 |     0.010 |       0.000 |      0.010 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |
@@ -138,14 +138,14 @@ Table of Contents
 +---------------------+-----------+
 | Name                | Power (W) |
 +---------------------+-----------+
-| pmod_step_interface |     0.873 |
-|   clock_Div         |     0.450 |
-|   control           |     0.059 |
-|   debounce_button0  |     0.126 |
-|   debounce_button1  |     0.033 |
-|   debounce_button2  |     0.026 |
-|   debounce_button3  |     0.040 |
-|   second_control    |     0.058 |
+| pmod_step_interface |    24.839 |
+|   clock_Div         |     0.455 |
+|   control           |     0.296 |
+|   debounce_button0  |     0.123 |
+|   debounce_button1  |     0.054 |
+|   debounce_button2  |     0.044 |
+|   debounce_button3  |     0.037 |
+|   second_control    |     0.435 |
 +---------------------+-----------+
 
 
