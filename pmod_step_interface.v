@@ -78,25 +78,10 @@ module pmod_step_interface(
             .db(rf_bounced[3])
             );
             
-    debounceplz debounce_limit0(
-            .clk(clk),
-            .reset(rst),
-            .sw(limit_switches[0]),
-            .db(limit_bounced[0])
-            );
-            
-    debounceplz debounce_limit1(
-            .clk(clk),
-            .reset(rst),
-            .sw(limit_switches[1]),
-            .db(limit_bounced[1])
-            );
-    //TODO Toggle-Lock Module (eventually incorperate limit switches!)
-    
     // The state machine that controls which 
     // signal on the stepper motor is high.      
     pmod_step_driver control(
-        .rst(rst),
+        .rst(limit_switches[0]),
         .dir(rf_bounced[0]),
         .clk(new_clk_net),
         .en(rf_bounced[1]),
@@ -105,7 +90,7 @@ module pmod_step_interface(
         );
         
     pmod_second_driver second_control(
-        .rst(rst),
+        .rst(limit_switches[1]),
         .dir(rf_bounced[2]),
         .clk(new_clk_net),
         .en(rf_bounced[3]),
