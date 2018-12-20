@@ -1,25 +1,18 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: Digilent
-// Engineer: Kaitlyn Franz
-// 
-// Create Date: 01/23/2016 03:44:35 PM
-// Design Name: Claw
-// Module Name: pmod_step_interface
-// Project Name: Claw_game
 // Target Devices: Basys3
-// Tool Versions: 2015.4
+//
 // Description: This module is the top module for a stepper motor controller
 // using the PmodSTEP. It operates in Full Step mode and encludes an enable signal
-// as well as direction control. The Enable signal is connected to switch one and 
-// the direction signal is connected to switch zero. 
-// 
-// Dependencies: 
-// 
+// as well as direction control. The Enable signal is connected to switch one and
+// the direction signal is connected to switch zero.
+//
+// Dependencies:
+//
 // Revision: 1
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
 
 
@@ -27,20 +20,20 @@ module pmod_step_interface(
     input clk,
     input rst,
     input [3:0] rf_input,
-    input [1:0] limit_switches,
+    input [1:0] limit,
     output [3:0] signal_out,
     output [3:0] second_signal,
     output [5:0] LED
     );
-    
-    // Wire to connect the clock signal 
+
+    // Wire to connect the clock signal
     // that controls the speed that the motor
-    // steps from the clock divider to the 
-    // state machine. 
-    wire new_clk_net;
-    wire [3:0] rf_bounced;
-    wire [1:0] limit_bounced;
-    
+    // steps from the clock divider to the
+    // state machine.
+    wire new_clk_net;    
+    wire [1:0] enabled;
+    wire [1:0] direction;
+
     // Clock Divider to take the on-board clock
     // to the desired frequency.
     clock_div clock_Div(
@@ -88,7 +81,7 @@ module pmod_step_interface(
         .signal(signal_out),
         .LEDz(LED[2:0])
         );
-        
+
     pmod_second_driver second_control(
         .rst(limit_switches[1]),
         .dir(rf_bounced[2]),
@@ -97,6 +90,6 @@ module pmod_step_interface(
         .signal(second_signal),
         .LED2z(LED[5:3])
         );
-        
-    
+
+
 endmodule
