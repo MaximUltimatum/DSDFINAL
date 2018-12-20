@@ -22,14 +22,15 @@ module pmod_step_interface(
     input [3:0] rf_input,
     input [1:0] limit,
     output [3:0] signal_out,
-    output [3:0] second_signal
+    output [3:0] second_signal,
+    output [5:0] LED
     );
 
     // Wire to connect the clock signal
     // that controls the speed that the motor
     // steps from the clock divider to the
     // state machine.
-    wire new_clk_net;    
+    wire new_clk_net;
     wire [1:0] enabled;
     wire [1:0] direction;
 
@@ -41,30 +42,53 @@ module pmod_step_interface(
         .new_clk(new_clk_net)
         );
 
-    //TODO Toggle-Lock Module (eventually incorperate limit switches!)
-    toggle_lock toggle_direction1 (clk, rst, rf_input[0], direction[0]);
-    toggle_lock toggle_direction2 (clk, rst, rf_input[1], direction[1]);
+    //TODO Debounce Module??
+    debounceplz debounce_button0(
+        .clk(clk),
+        .reset(rst),
+        .sw(rf_input[0]),
+        .db(rf_bounced[0])
+        );
 
-    toggle_motor toggle_motor1(clk, rst, rf_input[2], limit[0], enabled[0]);
-    toggle_motor toggle_motor2(clk, rst, rf_input[3], limit[1], enabled[1]);
+    debounceplz debounce_button1(
+        .clk(clk),
+        .reset(rst),
+        .sw(rf_input[1]),
+        .db(rf_bounced[1])
+        );
 
+    debounceplz debounce_button2(
+            .clk(clk),
+            .reset(rst),
+            .sw(rf_input[2]),
+            .db(rf_bounced[2])
+            );
+
+    debounceplz debounce_button3(
+            .clk(clk),
+            .reset(rst),
+            .sw(rf_input[3]),
+            .db(rf_bounced[3])
+            );
 
     // The state machine that controls which
     // signal on the stepper motor is high.
     pmod_step_driver control(
-        .rst(rst),
-        .dir(direction[0]),
+        .rst(limit_switches[0]),
+        .dir(rf_bounced[0]),
         .clk(new_clk_net),
-        .en(enabled[0]),
-        .signal(signal_out)
+        .en(rf_bounced[1]),
+        .signal(signal_out),
+        .LEDz(LED[2:0])
         );
 
     pmod_second_driver second_control(
-        .rst(rst),
-        .dir(direction[1]),
+        .rst(limit_switches[1]),
+        .dir(rf_bounced[2]),
         .clk(new_clk_net),
-        .en(enabled[1]),
-        .signal(second_signal)
+        .en(rf_bounced[3]),
+        .signal(second_signal),
+        .LED2z(LED[5:3])
         );
 
 

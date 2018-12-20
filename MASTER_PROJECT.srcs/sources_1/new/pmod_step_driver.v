@@ -3,7 +3,8 @@ module pmod_step_driver(
     input dir,
     input clk,
     input en,
-    output reg [3:0] signal
+    output reg [3:0] signal,
+    output reg [2:0] LEDz
     );
     
     //local parameters that hold the values of 
@@ -15,13 +16,47 @@ module pmod_step_driver(
     localparam sig1 = 3'b110;
     localparam sig0 = 3'b000;
     
+    
     // register values to hold the values 
     // of the present and next states.
     reg [2:0] present_state, next_state;
+    reg dirT;
+    reg enT;
     
+    
+    //TOGGLING
+    always @(posedge dir)
+    begin
+        if(dir == 1'b1 && dirT == 1'b0)
+            begin
+            dirT <= 1'b1;
+            LEDz[1] <= 1'b1;
+            end
+        else if(dir == 1'b1 && dirT == 1'b1)
+            begin
+            dirT <= 1'b0;
+            LEDz[1] <= 1'b0;
+            end
+    end
+    
+    always @(posedge en)
+    begin
+        if(en == 1'b1 && enT == 1'b0)
+            begin
+            enT <= 1'b1;
+            LEDz[0] <= 1'b1;
+            end
+        else if(en == 1'b1 && enT == 1'b1)
+            begin
+            enT <= 1'b0;
+            LEDz[0] <= 1'b0;
+            end
+    end
+        
+           
     // run when the present state, direction
     // or enable signals change.
-    always @(present_state, dir, en)
+    always @(present_state, dirT, enT)
     begin
         // Based on the present state 
         //do something.
@@ -35,9 +70,9 @@ module pmod_step_driver(
             // is high and enable is high
             // next state is sig1. If enable is low
             // next state is sig0.
-            if (dir == 1'b0 && en == 1'b1)
+            if (dirT == 1'b0 && enT == 1'b1)
                 next_state = sig3;
-            else if (dir == 1'b1 && en == 1'b1)
+            else if (dirT == 1'b1 && enT == 1'b1)
                 next_state = sig1;
             else 
                 next_state = sig0;
@@ -50,9 +85,9 @@ module pmod_step_driver(
             // is high and enable is high
             // next state is sig4. If enable is low
             // next state is sig0.
-            if (dir == 1'b0 && en == 1'b1)
+            if (dirT == 1'b0 && enT == 1'b1)
                 next_state = sig2;
-            else if (dir == 1'b1 && en == 1'b1)
+            else if (dirT == 1'b1 && enT == 1'b1)
                 next_state = sig4;
             else
                 next_state = sig0;
@@ -69,9 +104,9 @@ module pmod_step_driver(
              // is high and enable is high
              // next state is sig3. If enable is low
              // next state is sig0.
-            if (dir == 1'b0 && en == 1'b1)
+            if (dirT == 1'b0 && enT == 1'b1)
                  next_state = sig1;
-             else if (dir == 1'b1 && en == 1'b1)
+             else if (dirT == 1'b1 && enT == 1'b1)
                  next_state = sig3;
              else
                  next_state = sig0;
@@ -84,9 +119,9 @@ module pmod_step_driver(
             // is high and enable is high
             // next state is sig2. If enable is low
             // next state is sig0.
-            if (dir == 1'b0 && en == 1'b1)
+            if (dirT == 1'b0 && enT == 1'b1)
                next_state = sig4;
-            else if (dir == 1'b1 && en == 1'b1)
+            else if (dirT == 1'b1 && enT == 1'b1)
                next_state = sig2;
             else
                next_state = sig0;
@@ -99,7 +134,7 @@ module pmod_step_driver(
             // the next state is sig1
             // If the enable is low,
             // next state is sig0.
-            if (en == 1'b1)
+            if (enT == 1'b1)
                 next_state = sig1;
             else
                 next_state = sig0;
