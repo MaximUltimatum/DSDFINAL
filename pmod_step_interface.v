@@ -20,19 +20,19 @@ module pmod_step_interface(
     input clk,
     input rst,
     input [3:0] rf_input,
-    input [1:0] limit,
+    input [1:0] limit_switches,
     output [3:0] signal_out,
     output [3:0] second_signal,
     output [5:0] LED
     );
 
-    // Wire to connect the clock signal
+    // Wire to connect the clock signal 
     // that controls the speed that the motor
-    // steps from the clock divider to the
-    // state machine.
+    // steps from the clock divider to the 
+    // state machine. 
     wire new_clk_net;
-    wire [1:0] enabled;
-    wire [1:0] direction;
+    wire [3:0] rf_bounced;
+    wire [1:0] limit_bounced;
 
     // Clock Divider to take the on-board clock
     // to the desired frequency.
